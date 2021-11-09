@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section.addbook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(128, 163, 74);
+  padding: 1rem;
+
+  h2 {
+    margin: 1rem;
+  }
+
+  form {
+    label,
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+    }
+    input,
+    textarea {
+      border: none;
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 2px;
+    }
+    textarea {
+      resize: none;
+    }
+    input:focus,
+    textarea:focus {
+      outline: none;
+    }
+  }
+}
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+  gap: 10px;
+
+  .book-container {
+    width: 400px;
+    background-color: antiquewhite;
+    padding: 1rem;
+
+    small {
+      font-weight: bold;
+    }
+
+    p,
+    small {
+      margin-top: 0.4rem;
+    }
+  }
+}

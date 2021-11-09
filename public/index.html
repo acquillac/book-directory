@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Book Directory</title>
+  </head>
+  <body>
+    <section class="addbook">
+      <h2>Add a new book</h2>
+      <form class="addbookform">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="title" />
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" placeholder="author" />
+        <label for="publisher">Publisher:</label>
+        <input
+          type="text"
+          name="publisher"
+          id="publisher"
+          placeholder="publisher"
+        />
+        <label for="discription">Discription:</label>
+        <textarea
+          name="discription"
+          id="discription"
+          cols="30"
+          rows="10"
+          placeholder="discription"
+        ></textarea>
+        <input type="submit" value="Add Book" />
+      </form>
+    </section>
+    <section class="books"></section>
+    <script src="app.js"></script>
+  </body>
+</html>

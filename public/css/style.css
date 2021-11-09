@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section.addbook {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #80a34a;
+  padding: 1rem;
+}
+
+section.addbook h2 {
+  margin: 1rem;
+}
+
+section.addbook form label,
+section.addbook form input,
+section.addbook form textarea {
+  display: block;
+  width: 100%;
+}
+
+section.addbook form input,
+section.addbook form textarea {
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+section.addbook form textarea {
+  resize: none;
+}
+
+section.addbook form input:focus,
+section.addbook form textarea:focus {
+  outline: none;
+}
+
+.books {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+  gap: 10px;
+}
+
+.books .book-container {
+  width: 400px;
+  background-color: antiquewhite;
+  padding: 1rem;
+}
+
+.books .book-container small {
+  font-weight: bold;
+}
+
+.books .book-container p,
+.books .book-container small {
+  margin-top: 0.4rem;
+}
+/*# sourceMappingURL=style.css.map */
