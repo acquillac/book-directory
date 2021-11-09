@@ -6,7 +6,7 @@ let author = document.getElementById("author");
 let publisher = document.getElementById("publisher");
 let discription = document.getElementById("discription");
 
-// Grabbing Data from json file
+// Getting books if any exist
 window.addEventListener("DOMContentLoaded", () => {
   let url = "http://127.0.0.1:3000/api";
   let xhr = new XMLHttpRequest();
@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   xhr.send();
 });
 
-// Adding books to page
+// if books exist display them on page
 function displayContent(data) {
   data = JSON.parse(data);
 
@@ -43,34 +43,7 @@ function displayContent(data) {
   removeBook();
 }
 
-// Remove book
-function removeBook() {
-  const getRemoveBtns = document.querySelectorAll(".remove-btn");
-
-  getRemoveBtns.forEach((book) => {
-    book.addEventListener("click", () => {
-      let bookId = book.parentElement.id;
-      let postData = { bookId };
-      let message = `Are you sure you want to delete ${bookId}`;
-
-      if (confirm(message) === true) {
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", "/test");
-        xhr.setRequestHeader("content-type", "application/json");
-        xhr.onload = () => {
-          if (xhr.response == "success") {
-            location.reload();
-          } else {
-            console.log("unable to remove");
-          }
-        };
-        xhr.send(JSON.stringify(postData));
-      }
-    });
-  });
-}
-
-// Sending Data to node server
+// Submiting a new book
 addBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -98,3 +71,30 @@ addBookForm.addEventListener("submit", (e) => {
 
   xhr.send(JSON.stringify(formData));
 });
+
+// Remove book
+function removeBook() {
+  const getRemoveBtns = document.querySelectorAll(".remove-btn");
+
+  getRemoveBtns.forEach((book) => {
+    book.addEventListener("click", () => {
+      let bookId = book.parentElement.id;
+      let postData = { bookId };
+      let message = `Are you sure you want to delete ${bookId}`;
+
+      if (confirm(message) === true) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/test");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.onload = () => {
+          if (xhr.response == "success") {
+            location.reload();
+          } else {
+            console.log("unable to remove");
+          }
+        };
+        xhr.send(JSON.stringify(postData));
+      }
+    });
+  });
+}
