@@ -1,3 +1,4 @@
+const { Console } = require("console");
 const { json } = require("express");
 const express = require("express");
 const fs = require("fs");
@@ -33,6 +34,26 @@ app.post("/", (req, res) => {
   config.push(bookData);
   let configJSON = JSON.stringify(config, null, 4);
   fs.writeFileSync("./bookdata.json", configJSON);
+});
+
+app.post("/test", (req, res) => {
+  console.log(req.body);
+  console.log(req.body.bookId);
+  res.send("success");
+
+  let configFile = fs.readFileSync("./bookData.json", "utf8");
+  let config = JSON.parse(configFile);
+
+  let index = -1;
+
+  config.forEach((book) => {
+    index++;
+    if (book[0] === req.body.bookId) {
+      config.splice(index, 1);
+      let configJSON = JSON.stringify(config, null, 4);
+      fs.writeFileSync("./bookdata.json", configJSON);
+    }
+  });
 });
 
 app.listen(port, () => {

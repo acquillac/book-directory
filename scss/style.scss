@@ -55,6 +55,15 @@ section.addbook {
     background-color: antiquewhite;
     padding: 1rem;
 
+    .remove-btn {
+      cursor: pointer;
+      background: rgb(251, 148, 148);
+      margin-top: 1rem;
+      padding: 5px 15px;
+      border: none;
+      border-radius: 2px;
+    }
+
     small {
       font-weight: bold;
     }
@@ -63,5 +72,17 @@ section.addbook {
     small {
       margin-top: 0.4rem;
     }
+  }
+}
+
+@media (max-width: 1244px) {
+  .books {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 835px) {
+  .books {
+    grid-template-columns: 1fr;
   }
 }

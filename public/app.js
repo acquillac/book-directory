@@ -9,14 +9,14 @@ let discription = document.getElementById("discription");
 // Grabbing Data from json file
 window.addEventListener("DOMContentLoaded", () => {
   let url = "http://127.0.0.1:3000/api";
-  let xhrget = new XMLHttpRequest();
-  xhrget.onreadystatechange = () => {
-    if (xhrget.readyState == 4 && xhrget.status == 200) {
-      displayContent(xhrget.response);
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      displayContent(xhr.response);
     }
   };
-  xhrget.open("GET", url, true);
-  xhrget.send();
+  xhr.open("GET", url, true);
+  xhr.send();
 });
 
 // Adding books to page
@@ -26,6 +26,7 @@ function displayContent(data) {
   data.forEach((book) => {
     const container = document.createElement("div");
     container.className = "book-container";
+    container.id = `${book[0]}`;
     let output = `
     <img src="/img/defaultbook.jpg" alt="Book Image" width="150" height="150"> 
     <h3>${book[0]}</h3>
@@ -33,9 +34,39 @@ function displayContent(data) {
     <p><small>Publisher: </small>${book[1].book_publisher}</p>
     <small>Discription: </small>
     <p>${book[1].book_discription}</p>
+    <button class="remove-btn">Remove Book</Button>
     `;
     container.innerHTML = output;
     bookOutput.appendChild(container);
+  });
+
+  removeBook();
+}
+
+// Remove book
+function removeBook() {
+  const getRemoveBtns = document.querySelectorAll(".remove-btn");
+
+  getRemoveBtns.forEach((book) => {
+    book.addEventListener("click", () => {
+      let bookId = book.parentElement.id;
+      let postData = { bookId };
+      let message = `Are you sure you want to delete ${bookId}`;
+
+      if (confirm(message) === true) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/test");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.onload = () => {
+          if (xhr.response == "success") {
+            location.reload();
+          } else {
+            console.log("unable to remove");
+          }
+        };
+        xhr.send(JSON.stringify(postData));
+      }
+    });
   });
 }
 
@@ -55,7 +86,11 @@ addBookForm.addEventListener("submit", (e) => {
   xhr.setRequestHeader("content-type", "application/json");
   xhr.onload = () => {
     if (xhr.status == 200) {
-      console.log(this.responseText);
+      title.value = "";
+      author.value = "";
+      publisher.value = "";
+      discription.value = "";
+      location.reload();
     } else {
       console.log("POST request to add book failed");
     }

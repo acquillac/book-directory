@@ -70,6 +70,15 @@ section.addbook form textarea:focus {
   padding: 1rem;
 }
 
+.books .book-container .remove-btn {
+  cursor: pointer;
+  background: #fb9494;
+  margin-top: 1rem;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 2px;
+}
+
 .books .book-container small {
   font-weight: bold;
 }
@@ -77,5 +86,19 @@ section.addbook form textarea:focus {
 .books .book-container p,
 .books .book-container small {
   margin-top: 0.4rem;
+}
+
+@media (max-width: 1244px) {
+  .books {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 835px) {
+  .books {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 /*# sourceMappingURL=style.css.map */
