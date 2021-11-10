@@ -8,6 +8,68 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.modal-overlay {
+  display: none;
+}
+
+.modal-overlay-active {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1, 1, 1, 0.65);
+  z-index: 10;
+  position: absolute;
+
+  .modal-content {
+    background-color: #fff;
+
+    width: 40vh;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .remove-btn {
+    display: none;
+  }
+
+  .edit-btn {
+    display: none;
+  }
+
+  .modal-form {
+    margin-bottom: 1rem;
+
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.4rem;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    #edit-submit-btn {
+      cursor: pointer;
+      background: rgb(172, 251, 148);
+      padding: 5px 15px;
+      border: none;
+      border-radius: 2px;
+    }
+
+    #edit-cancel-btn {
+      cursor: pointer;
+      background: rgb(251, 148, 148);
+      padding: 5px 15px;
+      border: none;
+      border-radius: 2px;
+    }
+  }
+}
+
 section.addbook {
   display: flex;
   flex-direction: column;
@@ -58,6 +120,15 @@ section.addbook {
     .remove-btn {
       cursor: pointer;
       background: rgb(251, 148, 148);
+      margin-top: 1rem;
+      padding: 5px 15px;
+      border: none;
+      border-radius: 2px;
+    }
+
+    .edit-btn {
+      cursor: pointer;
+      background: rgb(128, 163, 74);
       margin-top: 1rem;
       padding: 5px 15px;
       border: none;

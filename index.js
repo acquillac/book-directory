@@ -36,7 +36,7 @@ app.post("/", (req, res) => {
   fs.writeFileSync("./bookdata.json", configJSON);
 });
 
-app.post("/test", (req, res) => {
+app.post("/delete", (req, res) => {
   console.log(req.body);
   console.log(req.body.bookId);
   res.send("success");
@@ -52,6 +52,36 @@ app.post("/test", (req, res) => {
       config.splice(index, 1);
       let configJSON = JSON.stringify(config, null, 4);
       fs.writeFileSync("./bookdata.json", configJSON);
+    }
+  });
+});
+
+app.post("/editbook", (req, res) => {
+  let configFile = fs.readFileSync("./bookData.json", "utf8");
+  let config = JSON.parse(configFile);
+
+  config.forEach((book) => {
+    if (book[0] === req.body.book_id) {
+      if (req.body.edit_title !== "") {
+        book[0] = req.body.edit_title;
+      }
+
+      if (req.body.edit_author !== "") {
+        book[1].book_author = req.body.edit_author;
+      }
+
+      if (req.body.edit_publisher !== "") {
+        book[1].book_publisher = req.body.edit_publisher;
+      }
+
+      if (req.body.edit_discription !== "") {
+        book[1].book_discription = req.body.edit_discription;
+      }
+
+      let configJSON = JSON.stringify(config, null, 4);
+      fs.writeFileSync("./bookdata.json", configJSON);
+
+      res.send("Book was edited");
     }
   });
 });

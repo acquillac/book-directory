@@ -8,6 +8,43 @@
     <title>Book Directory</title>
   </head>
   <body>
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <form class="modal-form">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="edit-title" placeholder="Title" />
+
+          <label for="author">Author</label>
+          <input
+            type="text"
+            name="author"
+            id="edit-author"
+            placeholder="Author"
+          />
+
+          <label for="publisher">Pubisher</label>
+          <input
+            type="text"
+            name="publisher"
+            id="edit-publisher"
+            placeholder="Publisher"
+          />
+
+          <label for="discription">Discription</label>
+          <textarea
+            name="discription"
+            id="edit-discription"
+            cols="30"
+            rows="10"
+            placeholder="discription"
+          ></textarea>
+
+          <input type="submit" value="submit" id="edit-submit-btn" />
+          <input type="submit" value="cancel" id="edit-cancel-btn" />
+        </form>
+      </div>
+    </div>
+
     <section class="addbook">
       <h2>Add a new book</h2>
       <form class="addbookform">
