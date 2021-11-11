@@ -1,4 +1,3 @@
-const { Console } = require("console");
 const { json } = require("express");
 const express = require("express");
 const fs = require("fs");
